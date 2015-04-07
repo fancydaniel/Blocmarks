@@ -1,2 +1,22 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<br />
+<div class="jumbotron">
+  <h1>Blocmarks 
+    <small>Social Bookmarking with Email Integration<small>
+  </h1>
+  <p>
+    <%= link_to "Sign In", new_user_session_path, class: 'btn btn-primary' %> or
+    <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %> today!
+  </p>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <h2>Keep your bookmarks organized</h2>
+  </div>
+  <div class="col-md-4">
+    <h2>Share bookmarks with friends</h2>
+  </div>
+  <div class="col-md-4">
+    <h2>Organize bookmarks by topic</h2>
+  </div>
+</div>
