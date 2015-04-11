@@ -1,10 +1,21 @@
-<h1>All Topics</h1>
-<% @topics.each do |topic| %>
-  <div class="media">
-    <div class="media-body">
-      <h4 class="media-heading">
-        <%= link_to topic.title, topic %>
-      </h4>
+<div class="row">
+<h1><u>Topics</u>  <small class="smaller">
+    <%= link_to "Add New", new_topic_path %>
+  </small>
+</h1>
+</div>
+
+<div class="row">
+  <% @topics.each do |topic| %>
+    <div class="media">
+      <div class="media-body">
+        <h4 class="media-heading">
+          <%= link_to topic.title, topic %>
+          <% if current_user %>
+            <small class="little"><%= link_to "Delete", [@topic, topic], method: :delete %></small>
+          <% end %>
+        </h4>
+
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>

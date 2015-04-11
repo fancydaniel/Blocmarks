@@ -8,3 +8,21 @@
 .nav {
   margin-top: 5px;
 }
+
+.smaller {
+  font-size: .45em;
+  opacity: 0.6;
+}
+.smaller:hover {
+  opacity: 1;
+}
+
+.little {
+  
+  font-size: 0.65em;
+  opacity: 0.75;
+}
+
+.little:hover {
+  opacity: 0.95;
+}
