@@ -20,9 +20,11 @@
 .little {
   
   font-size: 0.65em;
-  opacity: 0.75;
+  opacity: 0;
+  text-decoration: none;
 }
 
 .little:hover {
-  opacity: 0.95;
+  opacity: 0.75;
+  text-decoration: none;
 }

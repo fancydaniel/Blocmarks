@@ -1,3 +1,13 @@
-<div class="row">
-  <h1><%= @topic.title %></h1>
-</div>
+<h1><%= @topic.title %></h1>
+
+<%= render partial: 'bookmarks/form', locals: { topic: @topic, bookmark: @new_bookmark } %>
+
+  <% @bookmarks.each do |bookmark| %>
+    <div class="media">
+      <div class="media-body">
+        <h4 class="media-heading">
+          <%= link_to bookmark.url, bookmark.url %>
+        </h4>
+      </div>
+    </div>
+  <% end %>

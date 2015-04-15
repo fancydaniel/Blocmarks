@@ -1,13 +1,13 @@
 class TopicsController < ApplicationController
+
   def index
     @topics = Topic.all
   end
 
   def show
     @topic = Topic.find(params[:id])
-
-    # @bookmark = Bookmark.find(params[:id])
-    # @bookmarks = @topic.bookmark
+    @bookmarks = @topic.bookmarks
+    @new_bookmark = Bookmark.new
   end
 
   def new
@@ -35,8 +35,8 @@ class TopicsController < ApplicationController
 
   def update
     @topic = Topic.find(params[:id])
-    authorize @topic
-    if @topic.update_attributes(params.require(:topic).permit(:name, :description, :public))
+
+    if @topic.update_attributes(topic_params)
       redirect_to topics_path
       flash[:notice] = "Your topic has been updated"
     else
@@ -58,7 +58,6 @@ class TopicsController < ApplicationController
   end
 
   private
-
   def topic_params
     params.require(:topic).permit(:title)
   end

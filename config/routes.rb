@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root to: 'welcome#index'
 
   resources :topics do
-    resources :bookmarks, only: [:index, :show, :create, :new]
+    resources :bookmarks, only: [:show, :create, :new]
   end
 
   post :incoming, to: 'incoming#create'

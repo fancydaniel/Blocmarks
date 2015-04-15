@@ -12,6 +12,7 @@
         <h4 class="media-heading">
           <%= link_to topic.title, topic %>
           <% if current_user %>
+            <small class="little"><%= link_to "Edit", edit_topic_path(topic.id) %></small>
             <small class="little"><%= link_to "Delete", [@topic, topic], method: :delete %></small>
           <% end %>
         </h4>
