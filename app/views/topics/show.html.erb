@@ -6,7 +6,11 @@
     <div class="media">
       <div class="media-body">
         <h4 class="media-heading">
-          <%= link_to bookmark.url, bookmark.url %>
+          <%= link_to bookmark.url, bookmark.url, target: "_blank" %>
+          <% if current_user %>
+            <small class="little"><%= link_to "Edit", edit_topic_bookmark_path(@topic, bookmark) %></small>
+            
+          <% end %>
         </h4>
       </div>
     </div>

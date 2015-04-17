@@ -1,6 +1,8 @@
 <div class="row">
 <h1><u>Topics</u>  <small class="smaller">
-    <%= link_to "Add New", new_topic_path %>
+    <% if current_user %>
+      <%= link_to "Add New", new_topic_path %>
+    <% end %>
   </small>
 </h1>
 </div>
