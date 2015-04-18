@@ -10,9 +10,9 @@
           <% if current_user %>
             <small class="little"><%= link_to "Edit", edit_topic_bookmark_path(@topic, bookmark) %></small>
             <small class="little"><%= link_to "Delete", [@topic, bookmark], method: :delete  %></small>
-            
           <% end %>
         </h4>
+        <%= render partial: 'likes/like', locals: { bookmark: @bookmark  } %>
       </div>
     </div>
   <% end %>

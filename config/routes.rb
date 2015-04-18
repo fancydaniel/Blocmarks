@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :topics do
     resources :bookmarks, only: [:edit, :update, :create, :new, :destroy]
+      resources :likes, only: [:create, :destroy]
   end
 
   post :incoming, to: 'incoming#create'

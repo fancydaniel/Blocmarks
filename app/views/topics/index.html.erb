@@ -18,6 +18,7 @@
             <small class="little"><%= link_to "Delete", [@topic, topic], method: :delete %></small>
           <% end %>
         </h4>
+        <%= render partial: 'likes/like', locals: { bookmark: @bookmark } %>
 
       </div>
     </div>
