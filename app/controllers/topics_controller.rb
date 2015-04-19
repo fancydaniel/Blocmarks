@@ -12,8 +12,6 @@ class TopicsController < ApplicationController
 
   def new
     @topic = Topic.new
-
-    # redirect_to @topic
   end
 
   def create
