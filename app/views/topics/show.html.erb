@@ -12,7 +12,7 @@
             <small class="little"><%= link_to "Delete", [@topic, bookmark], method: :delete  %></small>
           <% end %>
         </h4>
-        <%= render partial: 'likes/like', collection: @bookmark %>
+        <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
       </div>
     </div>
   <% end %>
