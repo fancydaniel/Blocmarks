@@ -14,7 +14,9 @@
     <li><%= link_to "Blocmarks", root_path %></li>
     <li><%= link_to "About", about_path %></li>
     <li><%= link_to "Topics", topics_path %></li>
-     <li><%= link_to "My Blocmarks", user_path(current_user) %></li>
+    <% if current_user %> 
+      <li><%= link_to "My Blocmarks", user_path(current_user) %></li>
+    <% end %>
 
 
 
@@ -27,11 +29,13 @@
       <% end %>
      </div>
   </ul>
+<br />
 
-
-
-<div class="notice"><%= notice %></div>
-<div class="alert"><%= alert %></div>
+<% if flash[:notice] %>
+<div class="alert alert-success notice"><%= notice %></div>
+<% elsif flash[:alert] %>
+<div class="alert alert-warning"><%= alert %></div>
+<% end %>
 
 <%= yield %>
 </div

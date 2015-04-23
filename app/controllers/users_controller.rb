@@ -2,6 +2,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @topic = Topic.find(params[:id])
+    @topics = @user.topics
+    @bookmark = Bookmark.find(params[:id])
+    @bookmarks = @topic.bookmarks
+    # @like = current_user.bookmark.likes
+
   end
 
   def create

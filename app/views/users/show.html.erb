@@ -1,3 +1,15 @@
 <h1>My Blocmarks</h1>
 
-
+<div class="row">
+  <% @topics.each do |topic| %>
+    <div class="media">
+      <div class="media-body">
+        <h3 class="media-heading">
+          <%= link_to topic.title, topic %>
+        </h3>
+          <% @bookmarks.each do |bookmark| %>
+              <%= link_to bookmark.url, bookmark.url, , target: "_blank"  %>
+          <% end %>      
+      </div>
+    </div>
+  <% end %>
