@@ -1,15 +1,41 @@
-<h1>My Blocmarks</h1>
+<h2 class="text-center"><u><%= "#{@user.email}'s Blockmarks"%></u></h2>
 
 <div class="row">
-  <% @topics.each do |topic| %>
+  <% @bookmarks_by_topic.each do |topic_with_bookmarks| %>
+  <% topic, bookmarks = topic_with_bookmarks %>
     <div class="media">
       <div class="media-body">
         <h3 class="media-heading">
           <%= link_to topic.title, topic %>
         </h3>
-          <% @bookmarks.each do |bookmark| %>
-              <%= link_to bookmark.url, bookmark.url, , target: "_blank"  %>
-          <% end %>      
+        <h4 class="col-md-4">
+          <% topic.bookmarks.each do |bookmark| %>
+              <%= link_to bookmark.url, bookmark.url, target: "_blank"  %>
+          <% end %>
+        </h4>      
       </div>
     </div>
   <% end %>
+
+<h2 class="text-center"><u>Liked Blocmarks</u></h2>
+
+<div class="row">
+  <% @liked_bookmarks_by_topic.each do |topic_with_bookmarks| %>
+    <% topic, bookmarks = topic_with_bookmarks %>
+
+    <div class="media">
+      <div class="media-body">
+        <h3 class="media-heading">
+          <%= link_to topic.title, topic %>
+        </h3>
+        <h4 class="col-md-4">
+          <% bookmarks.each do |bookmark| %>
+              <%= link_to bookmark.url, bookmark.url, target: "_blank"  %>
+          <% end %>
+        </h4>      
+      </div>
+    </div>
+  <% end %>
+
+  
+

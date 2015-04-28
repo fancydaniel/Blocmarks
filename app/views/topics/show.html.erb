@@ -1,8 +1,13 @@
 <h1><%= @topic.title %></h1>
 
 <%= render partial: 'bookmarks/form', locals: { topic: @topic, bookmark: @new_bookmark } %>
+ 
 
-  <% @bookmarks.each do |bookmark| %>
+  <% @bookmarks.each_slice(3) do |row| %> 
+  <% #@bookmarks.each do |bookmark| %>
+  <div class="row">
+    <% row.each do |bookmark| %>
+    <div class="col-md-4">
     <div class="media">
       <div class="media-body">
         <h4 class="media-heading">
@@ -14,5 +19,9 @@
         </h4>
         <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
       </div>
-    </div>
+   </div>
+ </div>
+   <% end %>
+ </div>
   <% end %>
+
