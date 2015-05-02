@@ -1,7 +1,7 @@
 <h1><%= @topic.title %></h1>
 
-<%= render partial: 'bookmarks/form', locals: { topic: @topic, bookmark: @new_bookmark } %>
- 
+
+  <%= render partial: 'bookmarks/form', locals: { topic: @topic, bookmark: @new_bookmark } %>
 
   <% @bookmarks.each_slice(3) do |row| %> 
   <% #@bookmarks.each do |bookmark| %>
@@ -12,7 +12,7 @@
       <div class="media-body">
         <h4 class="media-heading">
           <%= link_to bookmark.url, bookmark.url, target: "_blank" %>
-          <% if current_user %>
+          <% if current_user %> <!-- changed from current_user -->
             <small class="little"><%= link_to "Edit", edit_topic_bookmark_path(@topic, bookmark) %></small>
             <small class="little"><%= link_to "Delete", [@topic, bookmark], method: :delete  %></small>
           <% end %>

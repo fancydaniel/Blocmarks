@@ -1,7 +1,9 @@
+<% if current_user %>
 <%= form_for [topic, bookmark] do |f| %>
   <%= f.label :url, "URL" %>
   <%= f.text_field :url %>
 
   <%= f.submit "Save" %>
 
+<% end %>
 <% end %>

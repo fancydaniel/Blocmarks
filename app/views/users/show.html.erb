@@ -1,41 +1,56 @@
+<div class="container">
 <h2 class="text-center"><u><%= "#{@user.email}'s Blockmarks"%></u></h2>
 
-<div class="row">
-  <% @bookmarks_by_topic.each do |topic_with_bookmarks| %>
+<% @bookmarks_by_topic.each do |topic_with_bookmarks| %>
   <% topic, bookmarks = topic_with_bookmarks %>
-    <div class="media">
-      <div class="media-body">
-        <h3 class="media-heading">
-          <%= link_to topic.title, topic %>
+    <div class="row">
+      <div class="media">
+        <div class="media-body">
+          <h3 class="media-heading">
+            <%= link_to topic.title, topic %>
+            <% topic.bookmarks.each_slice(3) do |row| %>
+              <div class="row">
+                <% row.each do |bookmark| %>
+                <h4 class="col-md-4">
+                <%= link_to bookmark.url, bookmark.url, target: "_blank"  %>
+                <% end %>
+                </h4>
+              </div>
+            <% end %>
         </h3>
-        <h4 class="col-md-4">
-          <% topic.bookmarks.each do |bookmark| %>
-              <%= link_to bookmark.url, bookmark.url, target: "_blank"  %>
-          <% end %>
-        </h4>      
       </div>
     </div>
-  <% end %>
+  </div>
+<% end %>
+
 
 <h2 class="text-center"><u>Liked Blocmarks</u></h2>
 
-<div class="row">
-  <% @liked_bookmarks_by_topic.each do |topic_with_bookmarks| %>
-    <% topic, bookmarks = topic_with_bookmarks %>
-
+<% @liked_bookmarks_by_topic.each do |topic_with_bookmarks| %>
+  <% topic, bookmarks = topic_with_bookmarks %>
+  <div class="row">
     <div class="media">
       <div class="media-body">
         <h3 class="media-heading">
           <%= link_to topic.title, topic %>
         </h3>
-        <h4 class="col-md-4">
-          <% bookmarks.each do |bookmark| %>
-              <%= link_to bookmark.url, bookmark.url, target: "_blank"  %>
-          <% end %>
-        </h4>      
-      </div>
+            <% bookmarks.each_slice(3) do |row| %>
+            <div class=”row”>
+            <% row.each do |bookmark| %>
+            <h4 class="col-md-4">
+            <%= link_to bookmark.url, bookmark.url, target: "_blank"  %>
+              <div class="align-center ">
+              <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
+            </div>
+            </h4>
+        <% end %>
+        </div>      
+      <% end %>
     </div>
-  <% end %>
+  </div>
+</div>
+<% end %>
 
-  
+</div> <!-- document container ends here -->
+
 
