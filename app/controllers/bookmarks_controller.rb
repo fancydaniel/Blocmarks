@@ -11,17 +11,24 @@ class BookmarksController < ApplicationController
   end
 
   def create 
-    @topic = Topic.find(params[:topic_id])
-    @bookmark = @topic.bookmarks.build(bookmark_params)
-    @bookmark.user = current_user
-    authorize @bookmark
-
-    if @bookmark.save
-      flash[:notice] = "Bookmark was added"
-      redirect_to @topic
+    raise
+    if params[:commit] == "Preview"
+      @topic = Topic.friendly.find(params[:topic_id])
+      @preview = LinkThumbnailer.generate(params[:bookmark][:url])
+      redirect_to(topic_path(@topic, preview: @preview.title))
     else
-      flash[:error] = "There was an error saving your bookmark. Please try again."
-      render :new
+      @topic = Topic.friendly.find(params[:topic_id])
+      @bookmark = @topic.bookmarks.build(bookmark_params)
+      @bookmark.user = current_user
+      authorize @bookmark
+
+      if @bookmark.save
+        flash[:notice] = "Bookmark was added"
+        redirect_to @topic
+      else
+        flash[:error] = "There was an error saving your bookmark. Please try again."
+        render :new
+      end
     end
   end
 

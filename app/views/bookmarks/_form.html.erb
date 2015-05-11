@@ -2,7 +2,8 @@
 <%= form_for [topic, bookmark] do |f| %>
   <%= f.label :url, "URL" %>
   <%= f.text_field :url %>
-
+  <%= @preview if @preview %>
+  <%= f.submit "Preview" %>
   <%= f.submit "Save" %>
 
 <% end %>

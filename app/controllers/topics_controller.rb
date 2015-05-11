@@ -5,9 +5,13 @@ class TopicsController < ApplicationController
   end
 
   def show
-    @topic = Topic.find(params[:id])
+    @topic = Topic.friendly.find(params[:id])
     @bookmarks = @topic.bookmarks
     @new_bookmark = Bookmark.new
+    @preview = params[:preview] if params[:preview]
+    if request.path != topic_path(@topic)
+      redirect_to @topic, status: :moved_permanently
+    end
   end
 
   def new
@@ -33,7 +37,7 @@ class TopicsController < ApplicationController
   end
 
   def update
-    @topic = Topic.find(params[:id])
+    @topic = Topic.friendly.find(params[:id])
     @topic.user = current_user
     authorize @topic
 
