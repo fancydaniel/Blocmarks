@@ -6,9 +6,6 @@ class Bookmark < ActiveRecord::Base
   belongs_to :user
   has_many :likes, dependent: :destroy
 
-  def self.preview(url)
-    LinkThumbnailer.generate(url).images.first.src.to_s
-  end
 
   protected
 
