@@ -11,11 +11,9 @@ class BookmarksController < ApplicationController
   end
 
   def create 
-    raise
     if params[:commit] == "Preview"
       @topic = Topic.friendly.find(params[:topic_id])
-      @preview = LinkThumbnailer.generate(params[:bookmark][:url])
-      redirect_to(topic_path(@topic, preview: @preview.title))
+      redirect_to(topic_path(@topic, preview: params[:bookmark][:url]))
     else
       @topic = Topic.friendly.find(params[:topic_id])
       @bookmark = @topic.bookmarks.build(bookmark_params)

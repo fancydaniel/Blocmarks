@@ -8,7 +8,8 @@ class TopicsController < ApplicationController
     @topic = Topic.friendly.find(params[:id])
     @bookmarks = @topic.bookmarks
     @new_bookmark = Bookmark.new
-    @preview = params[:preview] if params[:preview]
+    @preview = Bookmark.preview(params[:preview]) if params[:preview]
+    @url = params[:preview]
     if request.path != topic_path(@topic)
       redirect_to @topic, status: :moved_permanently
     end
