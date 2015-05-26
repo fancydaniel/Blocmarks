@@ -40,13 +40,9 @@ group :development do
 end
 
 gem 'figaro', '1.0'
-
 gem "paperclip", "~> 4.2"
-
 gem 'pundit'
-
 gem 'link_thumbnailer'
-
 gem 'friendly_id'
 
 # Use ActiveModel has_secure_password

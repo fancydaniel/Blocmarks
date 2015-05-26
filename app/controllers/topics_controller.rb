@@ -5,7 +5,6 @@ class TopicsController < ApplicationController
   end
 
   def show
-    # raise
     @topic = Topic.friendly.find(params[:id])
     @bookmarks = @topic.bookmarks
     @new_bookmark = Bookmark.new

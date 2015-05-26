@@ -1,5 +1,5 @@
 <% if current_user %>
-<%= form_for [topic, bookmark] do |f| %>
+<%= form_for [topic, bookmark], html: { multipart: true } do |f| %>
   <%= f.label :url, "URL" %>
   <%= f.text_field :url, value: params[:preview] %>
   <%= image_tag(@preview.image_url) if @preview.present? %>

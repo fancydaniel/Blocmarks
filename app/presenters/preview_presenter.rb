@@ -4,6 +4,8 @@ class PreviewPresenter
   def initialize(site_url)
     @present = !!site_url
     @site_url = site_url
+
+    # Breaks when site_url is nil
     @image_url = PreviewService.new(site_url).image_url
   end
 

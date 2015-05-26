@@ -11,6 +11,9 @@
     <div class="media">
       <div class="media-body">
         <h4 class="media-heading">
+
+          <%= image_tag bookmark.image_url %>
+
           <%= link_to bookmark.url, bookmark.url, target: "_blank" %>
           <% if current_user %> <!-- changed from current_user -->
             <small class="little"><%= link_to "Edit", edit_topic_bookmark_path(@topic, bookmark) %></small>
