@@ -8,10 +8,10 @@ class Bookmark < ActiveRecord::Base
 
   
 
-  def self.add_image(params)
-    bookmark = new(params)
+  def self.new_with_image(params)
+    bookmark = new
     preview = PreviewService.new(params[:url])
-    # bookmark.title = preview.title
+    bookmark.url = preview.site_url
     bookmark.image_url = preview.image_url
     bookmark
   end

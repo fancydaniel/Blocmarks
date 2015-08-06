@@ -17,7 +17,7 @@ class BookmarksController < ApplicationController
       redirect_to(topic_path(@topic, preview: params[:bookmark][:url]))
     else
       @topic = Topic.friendly.find(params[:topic_id])
-      @bookmark = Bookmark.add_image(bookmark_params)
+      @bookmark = Bookmark.new_with_image(bookmark_params)
       @bookmark.topic = @topic
       @bookmark.user = current_user
       authorize @bookmark

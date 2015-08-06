@@ -6,7 +6,11 @@ class PreviewPresenter
     @site_url = site_url
 
     # Breaks when site_url is nil
-    @image_url = PreviewService.new(site_url).image_url
+    if site_url
+      @image_url = PreviewService.new(site_url).image_url
+    else
+      @image_url = nil
+    end
   end
 
   def present?

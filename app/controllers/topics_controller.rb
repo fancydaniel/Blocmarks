@@ -9,10 +9,11 @@ class TopicsController < ApplicationController
     @bookmarks = @topic.bookmarks
     @new_bookmark = Bookmark.new
     @preview = PreviewPresenter.new(params[:preview]) 
+
     if request.path != topic_path(@topic)
       redirect_to @topic, status: :moved_permanently
     end
-    @url = @preview.image_url
+    
   rescue PreviewService::InvalidURLError
     flash.now[:error] = "Please enter a valid URL." if params[:preview].present?
   end

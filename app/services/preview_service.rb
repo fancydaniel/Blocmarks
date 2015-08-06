@@ -3,12 +3,13 @@ class PreviewService
   class InvalidURLError < StandardError
   end
 
-  attr_accessor :site_url
+  attr_reader :site_url
 
   def initialize(site_url)
-    @site_url = smart_add_url_protocol(site_url)
-    @thumbnail = LinkThumbnailer.generate(site_url)
-  rescue LinkThumbnailer::BadUriFormat
+    @site_url = smart_add_url_protocol(site_url)   # <-- Not working right now
+    @thumbnail = LinkThumbnailer.generate(@site_url)
+
+  rescue
     raise InvalidURLError
   end
 
@@ -22,7 +23,7 @@ class PreviewService
 
   private
 
-  def smart_add_url_protocol(url)
+  def smart_add_url_protocol(url)        # <-- Not working right now
     if url.match(/\Ahttp:\/\//) || url.match(/\Ahttps:\/\//)
       url
     else

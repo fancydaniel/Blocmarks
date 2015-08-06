@@ -26,7 +26,9 @@ class IncomingController < ApplicationController
     end
 
     # Now that you're sure you have a valid user and topic, build and save a new bookmark
-    @bookmark = @topic.bookamarks.build(url: @url)
+    @bookmark = Bookmark.new_with_image(url: @url)
+    @bookmark.topic = @topic
+    @bookmark.user = @user
     @bookmark.save!
 
     # Assuming all went well

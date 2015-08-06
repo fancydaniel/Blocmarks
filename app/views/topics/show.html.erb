@@ -15,7 +15,7 @@
           <%= image_tag bookmark.image_url %>
 
           <%= link_to bookmark.url, bookmark.url, target: "_blank" %>
-          <% if current_user %> <!-- changed from current_user -->
+          <% if current_user %>
             <small class="little"><%= link_to "Edit", edit_topic_bookmark_path(@topic, bookmark) %></small>
             <small class="little"><%= link_to "Delete", [@topic, bookmark], method: :delete  %></small>
           <% end %>
